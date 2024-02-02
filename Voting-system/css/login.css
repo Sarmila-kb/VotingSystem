@@ -1,0 +1,52 @@
+        input {
+            width: 200px;
+            height: 25px;
+            color: darkblue;
+            background-color: antiquewhite;
+            border-radius: 15px;
+        }
+
+        #file {
+            width: 200px;
+            height: 25px;
+            padding-right: 0px;
+            padding-left: 10px;
+            padding-top: 6px;
+            border-radius: 15px;
+        }
+
+        select {
+            width: 200px;
+            height: 30px;
+            color: darkblue;
+            background-color: antiquewhite;
+            border-radius: 15px;
+            padding-right: 50px;
+            padding-left: 10px;
+            padding-top: 4px;
+            padding-bottom: 0px;
+        }
+
+        h1 {
+            color: burlywood;
+        }
+
+        h2 {
+            color: burlywood;
+        }
+
+        h3 {
+            color: burlywood;
+        }
+
+        button {
+            background-color: indianred;
+            height: 30px;
+            width: 75px;
+            border-radius: 15px;
+        }
+
+        body {
+            background-image: url('vote1.jpg');
+            font-family: cursive;
+        }

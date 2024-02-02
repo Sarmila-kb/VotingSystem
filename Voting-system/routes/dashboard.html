@@ -1,0 +1,122 @@
+<?php
+session_start();
+if(!isset($_SESSION['userdata']))
+{
+    header("location: ../");
+}
+$userdata=$_SESSION['userdata'];
+$groupsdata=$_SESSION['groupsdata'];
+
+?>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Online Voting System-dashboard</title>
+        <link rel="stylesheet" href="../css/login.css">
+        <title>Online Voting System-login</title>
+        <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+        <style>
+                #back {
+                        float: left;
+                }
+
+                #logout {
+                        float: right;
+                }
+
+                h1 {
+                        padding: 5px;
+                }
+
+                #Profile {
+                        color: burlywood;
+                        padding: 20px;
+                        width: 30%;
+                        background-color: black;
+                        float: left;
+                }
+
+                #Group {
+                        color: burlywood;
+                        padding: 20px;
+                        width: 60%;
+                        background-color: black;
+                        float: right;
+                }
+        </style>
+        <div>
+                <center>
+                        <a href="../"><button id="back"><b>Back</b></button></a>
+                        <a href="../login.html"><button id="Logout"><b>Logout</b></button></a>
+
+                        <h1> <i>Online voting system</i></h1>
+                </center>
+        </div>
+
+        <hr>
+        <div id="Profile">
+                <center> <img src="../images/ <? php echo $userdata['photo'] ?>" height="100" width="100"></center>
+                <br><br>
+                <b>Name:</b>
+                <?php echo $userdata['name'] ?><br><br>
+                <b>Mobile:</b>
+                <?php echo $userdata['mobile'] ?><br><br>
+                <b>Address:</b>
+                <?php echo $userdata['address'] ?><br><br>
+                <b>Status:</b>
+                <?php echo $status ?><br><br>
+        </div>
+        <div id="Group">
+                <?php 
+                if($_SESSION['groupsdata'])
+                {
+                        for($i=0;$i<count($groupsdata);$i++){
+                ?>
+                <div>
+                        <img style="float:right" src="../images/ <? php echo $groupsdata['photo'] ?>" height="100"
+                                width="100"><br>
+                        <b>Group Name: </b>
+                        <?php echo $groupsdata[$i]['name'] ?><br><br>
+                        <b>Name: </b>
+                        <?php echo $groupsdata[$i]['votes'] ?><br><br>
+                        <form action="../api/vote.php" method="post">
+                                <input type="hidden" name="gvote" value="<?php echo $groupsdata[$i]['votes'] ?>">
+                                <input type="hidden" name="gid" value="<?php echo $groupsdata[$i]['id'] ?>">
+                                <button type="submit" name="votebtn" id="votebtn"><b>Vote</b></button>
+                               
+                        </form>
+                </div>
+
+                <hr>
+                <div>
+                        <img style="float:right" src="../images/ <? php echo $groupsdata['photo'] ?>" height="100"
+                                width="100"><br>
+                        <b>Group Name: </b>
+                        <?php echo $groupsdata[$i]['name'] ?><br><br>
+                        <b>Name: </b>
+                        <?php echo $groupsdata[$i]['votes'] ?><br><br>
+                        <form action="../api/vote.php" method="post">
+                                <input type="hidden" name="gvote" value="<?php echo $groupsdata[$i]['votes'] ?>">
+                                <input type="hidden" name="gid" value="<?php echo $groupsdata[$i]['id'] ?>">
+                                <button type="submit" name="votebtn" id="votebtn"><b>Vote</b></button>
+                               
+                        </form>
+                </div>
+                <?php
+                     }
+                }
+                else
+                {
+
+                }
+                ?>
+        </div>
+        </div></div>
+</body>
+
+</html>
